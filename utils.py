@@ -69,7 +69,7 @@ def sanitize_filename(name: str) -> str:
     return sanitized.lower()
 
 
-def create_researcher_folders(base_path: Path, alias: str) -> tuple[Path, Path]:
+def create_researcher_folders(base_path: Path | str, alias: str) -> tuple[Path, Path]:
     """Create folder structure for a researcher.
     
     Args:
@@ -79,6 +79,7 @@ def create_researcher_folders(base_path: Path, alias: str) -> tuple[Path, Path]:
     Returns:
         Tuple of (researcher_folder, memory_folder)
     """
+    base_path = Path(base_path) if isinstance(base_path, str) else base_path
     researcher_folder = base_path / sanitize_filename(alias)
     memory_folder = researcher_folder / "memory"
     
