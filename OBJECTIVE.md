@@ -3,6 +3,18 @@
 ## Research Topic
 How to solve the potential problem of mass unemployment in the post-AI era?
 
+## Location Focus
+
+**Target Location:** Hong Kong
+
+This research will focus on policy solutions tailored for Hong Kong's unique context:
+- High cost of living and housing
+- Service-oriented economy with strong finance sector
+- Aging population
+- Limited social safety net traditions
+- Close integration with mainland China's economy
+- Strong emphasis on education and professional qualifications
+
 ## Configuration
 
 ### Researchers (3)
@@ -12,6 +24,24 @@ How to solve the potential problem of mass unemployment in the post-AI era?
 | Paul   | deepseek/deepseek-v3.2 | English  | Economic policy expert            |
 | Mary   | moonshotai/kimi-k2.5   | English  | Social welfare specialist         |
 | Ming   | qwen/qwen3-max         | Chinese  | Technology and society researcher |
+
+### Policy Agent
+
+| Parameter          | Value                                           |
+|--------------------|-------------------------------------------------|
+| Alias              | Policy                                          |
+| LLM Model          | qwen/qwen3-max                                  |
+| Language           | English                                         |
+| Max Proposal Words | 3000                                            |
+| Target Location    | Hong Kong                                       |
+| Proposal Terms     | Short-term (1-2 years), Mid-term (3-5 years), Long-term (5+ years) |
+
+The Policy agent will:
+1. Study all research materials from Paul, Mary, and Ming
+2. Synthesize findings into actionable policy proposals
+3. Develop short, mid, and long-term deployment strategies specific to Hong Kong
+4. Remain objective without personal preference
+5. Base all recommendations solely on the research materials
 
 ### Sub-Agents Configuration
 
@@ -35,6 +65,13 @@ Sub-agents can reference Round 1 materials to:
 - Identify gaps and potential synergies between solutions
 - Propose actionable recommendations
 
+### Phase 3: Policy Proposal
+The Policy agent reviews all research summaries and materials to:
+- Identify common themes and divergent viewpoints
+- Evaluate policy options for Hong Kong's specific context
+- Develop integrated short, mid, and long-term policy proposals
+- Create actionable implementation roadmap
+
 ## Output Requirements
 
 1. **Research Materials**: Stored in each researcher's `memory/` folder
@@ -46,6 +83,15 @@ Sub-agents can reference Round 1 materials to:
    - Executive summary
    - Key findings from each round
    - Recommendations
+   - References
+
+3. **Policy Proposal**: The Policy agent produces `PROPOSAL.md`
+   - Executive summary
+   - Analysis of research findings
+   - Short-term policies (1-2 years)
+   - Mid-term policies (3-5 years)
+   - Long-term policies (5+ years)
+   - Implementation considerations
    - References
 
 ## Research Areas for Sub-Agents

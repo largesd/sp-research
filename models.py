@@ -30,6 +30,22 @@ class ResearcherConfig:
 
 
 @dataclass
+class PolicyConfig:
+    """Configuration for the Policy agent."""
+    alias: str = "Policy"
+    model: str = "qwen/qwen3-max"
+    language: str = "Chinese"
+    max_proposal_words: int = 3000
+    target_location: str = "Hong Kong"
+    proposal_terms: List[str] = field(default_factory=lambda: [
+        "Short-term (1-2 years)",
+        "Mid-term (3-5 years)",
+        "Long-term (5+ years)"
+    ])
+    description: str = "Policy analyst who synthesizes research into actionable policy proposals"
+
+
+@dataclass
 class ResearchConfig:
     """Overall research configuration parsed from OBJECTIVE.md."""
     topic: str
@@ -37,6 +53,8 @@ class ResearchConfig:
     research_rounds: int = 2
     sub_agent_default_count: int = 5
     research_areas: List[str] = field(default_factory=list)
+    target_location: str = ""
+    policy_agent: Optional[PolicyConfig] = None
 
 
 @dataclass
@@ -57,3 +75,16 @@ class ResearchSummary:
     key_findings: List[str] = field(default_factory=list)
     recommendations: List[str] = field(default_factory=list)
     references: List[str] = field(default_factory=list)
+
+
+@dataclass
+class PolicyProposal:
+    """Policy proposal output from Policy agent."""
+    executive_summary: str
+    research_analysis: str
+    short_term_policies: List[str] = field(default_factory=list)
+    mid_term_policies: List[str] = field(default_factory=list)
+    long_term_policies: List[str] = field(default_factory=list)
+    implementation_considerations: str = ""
+    references: List[str] = field(default_factory=list)
+    timestamp: str = ""
